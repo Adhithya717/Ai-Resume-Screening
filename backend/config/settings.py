@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [ '*',  # For testing
     'airesumescreening.onrender.com',              # Frontend domain
     'ai-resume-screening-wlx0.onrender.com',       # Backend domain
     'localhost',
-    '127.0.0.1
+    '127.0.0.1',
 ]
 
 
@@ -131,7 +131,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://airesumescreening.onrender.com",,
+    "https://airesumescreening.onrender.com",
 ]
 
 # Allow credentials if needed
