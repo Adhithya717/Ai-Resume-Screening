@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-@@#o1uzk6)r&@29(3f-5_n_x*$h3nst6=t1l&rvh#1en_1huws
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'
+                 'https://airesumescreening.onrender.com']
 
 
 # Application definition
@@ -126,7 +127,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://your-frontend.onrender.com",
+    "https://ai-resume-screening-wlx0.onrender.com",
 ]
 
 # Allow credentials if needed
