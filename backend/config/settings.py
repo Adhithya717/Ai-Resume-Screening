@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-@@#o1uzk6)r&@29(3f-5_n_x*$h3nst6=t1l&rvh#1en_1huws
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*'
-                 'https://airesumescreening.onrender.com']
+ALLOWED_HOSTS = [ '*',  # For testing
+    'airesumescreening.onrender.com',              # Frontend domain
+    'ai-resume-screening-wlx0.onrender.com',       # Backend domain
+    'localhost',
+    '127.0.0.1
+]
 
 
 # Application definition
@@ -127,17 +131,28 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://ai-resume-screening-wlx0.onrender.com",
+    "https://airesumescreening.onrender.com",,
 ]
 
 # Allow credentials if needed
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Django REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.MultiPartParser',
         'rest_framework.parsers.FormParser',
     ]
-}# CORS Settings
+}
+
+# Production security settings
+if not DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
