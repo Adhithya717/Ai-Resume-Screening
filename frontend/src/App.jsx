@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
-const API_BASE = 'https://airesumescreening.onrender.com'
+const API_BASE = 'https://airesumescreening.onrender.com/api'
 
 function App() {
   const [jobs, setJobs] = useState([])
