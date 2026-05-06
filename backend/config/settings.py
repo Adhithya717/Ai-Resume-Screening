@@ -26,11 +26,11 @@ SECRET_KEY = 'django-insecure-@@#o1uzk6)r&@29(3f-5_n_x*$h3nst6=t1l&rvh#1en_1huws
 DEBUG = False
 
 ALLOWED_HOSTS = [ 
-     '*',  # For testing (remove in production)
-    'ai-resume-screening-wlx0.onrender.com',           # ✅ Your Backend
-    'airesumescreening.onrender.com',                   # Your Frontend
-    'http://localhost:5173/', 
-    '127.0.0.1',  # For testing
+    '*',  # For testing
+    'ai-resume-screening-wlx0.onrender.com',    # ✅ Backend domain
+    'airesumescreening.onrender.com',            # ✅ Frontend domain
+    'localhost',                                  # ✅ Local dev (no http://)
+    '127.0.0.1', 
     
 ]
 
@@ -45,12 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
+    'corsheaders',  # ← Must be here!
     'api',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # ← MUST BE FIRST
+    'corsheaders.middleware.CorsMiddleware',  # ← MUST BE FIRST!
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,9 +136,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://airesumescreening.onrender.com",
 ]
 
-# Allow credentials if needed
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = False
+
+# Production security
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
